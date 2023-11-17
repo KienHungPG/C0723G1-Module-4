@@ -1,4 +1,4 @@
-package com.example;
+package com.codegym.quan_li_san_pham.config;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
