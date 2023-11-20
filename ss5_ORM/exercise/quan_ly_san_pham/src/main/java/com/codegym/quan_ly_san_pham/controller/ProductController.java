@@ -1,7 +1,7 @@
-package com.codegym.quan_li_san_pham.controller;
+package com.codegym.quan_ly_san_pham.controller;
 
-import com.codegym.quan_li_san_pham.model.Product;
-import com.codegym.quan_li_san_pham.service.IProductService;
+import com.codegym.quan_ly_san_pham.model.Product;
+import com.codegym.quan_ly_san_pham.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
