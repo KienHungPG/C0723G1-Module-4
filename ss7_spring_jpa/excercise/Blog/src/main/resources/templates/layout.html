@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>BLOG</title>
+
+    <style type="text/css">
+        .create a {
+            border-radius: 5px;
+            margin: 10px 0;
+            padding: 20px;
+            background: #1b96b7;
+            color: #f2f2f2;
+            text-decoration: none;
+        }
+
+        h3 {
+            background-color: #335a93;
+            color: white;
+            padding: 10px 0 10px 20px;
+        }
+
+        footer {
+            margin: 10px 0;
+        }
+
+        #products {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #products td, #products th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #products tr:nth-child(even) {
+            background-color: powderblue;
+        }
+
+        #products tr:hover {
+            background-color: #ddd;
+        }
+
+        #products th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #1b96b7;
+            color: white;
+        }
+
+        input[type=text] {
+            width: 100%;
+            padding: 12px 0px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=number] {
+            width: 100%;
+            padding: 12px 0px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea, select {
+            width: 100%;
+            padding: 12px 0px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 300px;
+            background-color: #1b96b7;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        #form {
+            width: 500px;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .notify span {
+            font-size: 15px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<!--<nav></nav>-->
+<nav th:fragment="nav" class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/blog"
+           style="color: #335a93;box-shadow: 0 0 2px 0 cornflowerblue;font-weight: bold">
+            BLOG</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/blog">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog/create">Create blog</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Category
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li th:each="category,start:${categorys}"><a class="dropdown-item"
+                                                                     th:href="@{/blog/category/{id}(id=${category.id})}"
+                                                                     th:text="${category.topic}"></a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/category">Manage category</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex" method="get" action="/blog/search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<footer th:fragment="footer">
+        <p style="font-weight: bold; font-size: 18px; text-align: center; justify-content: center; margin-top: 50px; color: #45a049">
+            &copy;2023 Blogs
+        </p>
+</footer>
+</body>
+</html>
