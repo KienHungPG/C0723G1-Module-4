@@ -47,8 +47,8 @@
             <p style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
           </div>
           <div class="input-group">
-            <input class="input--style-3" th:field="*{age}" type="number" placeholder="Age" name="age">
-            <p style="color: red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
+            <input class="input--style-3" th:field="*{birthDate}" type="date" placeholder="Birthday" name="birthday">
+            <p style="color: red" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></p>
           </div>
           <div class="p-t-10">
             <button class="btn btn--pill btn--green" type="submit">Create account</button>
