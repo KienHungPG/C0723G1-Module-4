@@ -14,8 +14,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class RestBlogController {
@@ -56,5 +58,14 @@ public class RestBlogController {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(categories,HttpStatus.OK);
+    }
+    @PostMapping("/blog")
+    public ResponseEntity<?> save(@RequestBody Blog blog) {
+        if (blog == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        blog.setDate(LocalDateTime.now());
+        blogService.createNewBlog(blog);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
