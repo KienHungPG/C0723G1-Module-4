@@ -36,7 +36,7 @@ public class RestBlogController {
             blogPage = blogService.searchByCategoryAndName(searchName, pageable, idCate);
         }
         if (blogPage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(blogPage, HttpStatus.OK);
     }
@@ -44,7 +44,7 @@ public class RestBlogController {
     public ResponseEntity<Blog> getDetail(@PathVariable int id) {
         Blog blog = blogService.getBlog(id);
         if (blog == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(blog, HttpStatus.OK);
     }
@@ -53,7 +53,7 @@ public class RestBlogController {
     public ResponseEntity<List<Category>> getCategory(){
         List<Category> categories = categoryService.getAllCategory();
         if (categories.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(categories,HttpStatus.OK);
     }

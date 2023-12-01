@@ -16,14 +16,14 @@ import java.util.Objects;
 public class Cart {
     private Map<Product, Integer> products = new HashMap<>();
 
-    private boolean checkItemInCart(Product product) {
-        for (Map.Entry<Product, Integer> entry : products.entrySet()) {
-            if (entry.getKey().getId() == (product.getId())) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    private boolean checkItemInCart(Product product) {
+//        for (Map.Entry<Product, Integer> entry : products.entrySet()) {
+//            if (entry.getKey().getId() == (product.getId())) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     private Map.Entry<Product, Integer> selectItemInCart(Product product) {
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
@@ -35,12 +35,11 @@ public class Cart {
     }
 
     public void addProduct(Product product) {
-        if (!checkItemInCart(product)) {
-            products.put(product, 1);
+        if (products.containsKey(product)) {
+            Integer newQuantity = products.get(product);
+            products.replace(product, newQuantity + 1);
         } else {
-            Map.Entry<Product, Integer> itemEntry = selectItemInCart(product);
-            Integer newQuantity = itemEntry.getValue() + 1;
-            products.replace(itemEntry.getKey(), newQuantity);
+            products.put(product,1);
         }
     }
 
